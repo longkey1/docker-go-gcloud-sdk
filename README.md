@@ -1,3 +1,3 @@
 # docker-gae-go
 
-simple alpine image with gcloud and google app engine go sdk
+debian latest image with `google cloud sdk` and `google app engine go sdk`
