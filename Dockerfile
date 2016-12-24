@@ -1,6 +1,6 @@
 FROM debian:latest
 
-RUN apt-get -y update && apt-get -y install curl git build-essential lsb-release unzip python-openssl
+RUN apt-get -y update && apt-get -y install curl git wget build-essential lsb-release unzip python-openssl
 
 # Install the Google Cloud SDK.
 
