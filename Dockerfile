@@ -10,7 +10,7 @@ RUN apt-get -y update && apt-get -y install google-cloud-sdk
 
 # Install the Google AppEngine SDK for GO
 
-ENV GAE_SDK_GO_VER 1.9.40
+ENV GAE_SDK_GO_VER 1.9.48
 ENV GAE_SDK_GO_ZIP go_appengine_sdk_linux_amd64-$GAE_SDK_GO_VER.zip
 
 ADD https://storage.googleapis.com/appengine-sdks/featured/$GAE_SDK_GO_ZIP .
