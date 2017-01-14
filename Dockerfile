@@ -19,6 +19,6 @@ RUN unzip -q $GAE_SDK_GO_ZIP -d /usr/local && rm -f $GAE_SDK_GO_ZIP
 RUN mkdir /go
 ENV GOPATH /go
 ENV PATH $PATH:/usr/local/go_appengine
-RUN ln -s /user/local/go_appengine/goroot/bin/goapp /user/local/bin/go
+RUN ln -s /usr/local/go_appengine/goroot/bin/goapp /usr/local/bin/go
 
 ENV CLOUDSDK_PYTHON_SITEPACKAGES 1
