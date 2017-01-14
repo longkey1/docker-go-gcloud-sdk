@@ -22,12 +22,3 @@ ENV PATH $PATH:/usr/local/go_appengine
 RUN ln -s /user/local/go_appengine/goroot/bin/goapp /user/local/bin/go
 
 ENV CLOUDSDK_PYTHON_SITEPACKAGES 1
-
-# Install the GO
-#
-#ENV GO_VER 1.6.2
-#ENV GO_GZ go$GO_VER.linux-amd64.tar.gz
-#
-#ADD https://storage.googleapis.com/golang/$GO_GZ .
-#RUN tar -C /usr/local -xzf $GO_GZ && rm -f $GO_GZ
-#ENV PATH $PATH:/usr/local/go/bin:/go/bin
