@@ -15,10 +15,16 @@ ENV GAE_SDK_GO_ZIP go_appengine_sdk_linux_amd64-$GAE_SDK_GO_VER.zip
 
 ADD https://storage.googleapis.com/appengine-sdks/featured/$GAE_SDK_GO_ZIP .
 RUN unzip -q $GAE_SDK_GO_ZIP -d /usr/local && rm -f $GAE_SDK_GO_ZIP
+ENV GOROOT /usr/local/go_appengine/goroot
+ENV GOPATH /usr/local/go_appengine/gopath
 
-RUN mkdir /go
-ENV GOPATH /go
-ENV PATH $PATH:/usr/local/go_appengine
 RUN ln -s /usr/local/go_appengine/goroot/bin/goapp /usr/local/bin/go
+ENV PATH /usr/local/go_appengine:$PATH
+
+RUN mkdir -p $GOPATH/bin
+RUN mkdir -p $GOPATH/src
+RUN mkdir -p $GOPATH/pkg
+RUN chmod -R 777 $GOPATH
+ENV PATH $GOPATH/bin:$PATH
 
 ENV CLOUDSDK_PYTHON_SITEPACKAGES 1
