@@ -1,3 +1,3 @@
 # docker-gae-go
 
-debian latest image with `google cloud sdk` and `google app engine go sdk`
+latest `google cloud sdk` image with `go`
