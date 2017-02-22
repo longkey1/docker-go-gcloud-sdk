@@ -1,6 +1,6 @@
 FROM google/cloud-sdk:latest
 
-RUN apt-get -y update && apt-get -y install curl
+RUN apt-get -y update && apt-get -y install curl git
 
 ENV GOROOT /google-cloud-sdk/platform/google_appengine/goroot
 ENV GOPATH /google-cloud-sdk/platform/google_appengine/gopath
