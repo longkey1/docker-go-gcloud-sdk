@@ -19,4 +19,4 @@ RUN chmod -R 777 $GOPATH
 ENV PATH $GOPATH/bin:$PATH
 
 # Usinng `goapp` instend of `go`
-RUN update-alternatives --install /usr/bin/go goapp /usr/lib/google-cloud-sdk/platform/google_appengine/goroot/bin/goapp 10
+RUN update-alternatives --install /usr/bin/go goapp /usr/lib/google-cloud-sdk/platform/google_appengine/goapp 10
