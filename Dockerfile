@@ -21,6 +21,9 @@ RUN mkdir -p $GOPATH/pkg
 RUN chmod -R 777 $GOPATH
 ENV PATH $GOPATH/bin:$PATH
 
+# Change Permission
+RUN chmod +x /usr/lib/google-cloud-sdk/platform/google_appengine/appcfg.py
+
 # Usinng `goapp` instend of `go`
 RUN update-alternatives --install /usr/bin/go go /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-1.6/bin/goapp 10
 RUN update-alternatives --install /usr/bin/go go /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-1.8/bin/goapp 20
