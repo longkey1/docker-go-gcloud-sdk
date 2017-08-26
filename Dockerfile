@@ -4,7 +4,7 @@ FROM google/cloud-sdk:latest
 ARG DEBIAN_FRONTEND=noninteractive
 
 # Install deploy tools
-RUN apt-get -y update && apt-get -y install curl git gettext apt-utils
+RUN apt-get -y update && apt-get -y install curl git gettext apt-utils build-essential
 
 # Set Go Version
 ENV GO_VERSION 1.8
