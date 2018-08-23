@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y update && apt-get -y install curl git gettext apt-utils build-essential
 
 # Set Go Version
-ENV GO_VERSION 1.8
+ENV GO_VERSION 1.9
 
 # Set paths
 ENV GOROOT /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-$GO_VERSION
@@ -26,7 +26,8 @@ RUN chmod +x /usr/lib/google-cloud-sdk/platform/google_appengine/appcfg.py
 
 # Using `goapp` instend of `go`
 RUN update-alternatives --install /usr/bin/go go /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-1.6/bin/goapp 10
-RUN update-alternatives --install /usr/bin/go go /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-1.8/bin/goapp 20
+RUN update-alternatives --install /usr/bin/go go /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-1.8/bin/goapp 10
+RUN update-alternatives --install /usr/bin/go go /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-$GO_VERSION/bin/goapp 20
 
 # Confirm go version
 RUN go version
