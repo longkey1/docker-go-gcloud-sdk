@@ -3,29 +3,25 @@ FROM google/cloud-sdk:latest
 # Fix frontend not set error
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Install deploy tools
-RUN apt-get -y update && apt-get -y install curl git gettext apt-utils build-essential
-
-# Set Go Version
-ENV GO_VERSION 1.9
-
-# Set paths
-ENV GOROOT /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-$GO_VERSION
-ENV GOPATH /usr/lib/google-cloud-sdk/platform/google_appengine/gopath
-ENV PATH /usr/lib/google-cloud-sdk/platform/google_appengine:$PATH
-
-# Make gopath directories
-RUN mkdir -p $GOPATH/bin
-RUN mkdir -p $GOPATH/src
-RUN mkdir -p $GOPATH/pkg
-RUN chmod -R 777 $GOPATH
-ENV PATH $GOPATH/bin:$PATH
-
 # Change Permission
 RUN chmod +x /usr/lib/google-cloud-sdk/platform/google_appengine/appcfg.py
 
-# Using `goapp` instend of `go`
-RUN update-alternatives --install /usr/bin/go go /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-$GO_VERSION/bin/goapp 10
+# Install packages
+RUN apt-get -y update && apt-get -y install apt-utils build-essential curl gettext git wget
+
+# Set Go Version
+ENV GO_VERSION 1.11.4
+
+# Set goroot
+ENV GOROOT /opt/go
+RUN cd /tmp && wget https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz && tar xzvf go${GO_VERSION}.linux-amd64.tar.gz && mv go ${GOROOT}
+ENV PATH ${GOROOT}/bin:${PATH}
+
+# Set gopath
+ENV GOPATH /work
+RUN mkdir -p ${GOPATH}/bin ${GOPATH}/src ${GOPATH}/pkg
+RUN chmod -R 777 ${GOPATH}
+ENV PATH ${GOPATH}/bin:${PATH}
 
 # Confirm go version
 RUN go version
