@@ -3,7 +3,8 @@ FROM google/cloud-sdk:latest
 # Fix frontend not set error
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Change Permission
+# Executable appcfg.py
+ENV PATH /usr/lib/google-cloud-sdk/platform/google_appengine:${PATH}
 RUN chmod +x /usr/lib/google-cloud-sdk/platform/google_appengine/appcfg.py
 
 # Install packages
