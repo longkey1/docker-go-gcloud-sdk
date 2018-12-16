@@ -25,9 +25,7 @@ ENV PATH $GOPATH/bin:$PATH
 RUN chmod +x /usr/lib/google-cloud-sdk/platform/google_appengine/appcfg.py
 
 # Using `goapp` instend of `go`
-RUN update-alternatives --install /usr/bin/go go /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-1.6/bin/goapp 10
-RUN update-alternatives --install /usr/bin/go go /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-1.8/bin/goapp 10
-RUN update-alternatives --install /usr/bin/go go /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-$GO_VERSION/bin/goapp 20
+RUN update-alternatives --install /usr/bin/go go /usr/lib/google-cloud-sdk/platform/google_appengine/goroot-$GO_VERSION/bin/goapp 10
 
 # Confirm go version
 RUN go version
