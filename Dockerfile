@@ -29,3 +29,6 @@ RUN go version
 
 # Install dep
 RUN go get -u github.com/golang/dep/cmd/dep
+
+# Install glide
+RUN curl https://glide.sh/get | sh
