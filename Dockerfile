@@ -11,7 +11,7 @@ RUN chmod +x /usr/lib/google-cloud-sdk/platform/google_appengine/appcfg.py
 RUN apt-get -y update && apt-get -y install apt-utils build-essential curl gettext git wget
 
 # Set Go Version
-ENV GO_VERSION 1.12.4
+ENV GO_VERSION 1.12.6
 
 # Set goroot
 ENV GOROOT /opt/go
