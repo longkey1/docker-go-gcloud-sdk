@@ -1,14 +1,8 @@
-FROM google/cloud-sdk:latest
-
-# Fix frontend not set error
-ARG DEBIAN_FRONTEND=noninteractive
+FROM longkey1/gcp:latest
 
 # Executable appcfg.py
 ENV PATH /usr/lib/google-cloud-sdk/platform/google_appengine:${PATH}
 RUN chmod +x /usr/lib/google-cloud-sdk/platform/google_appengine/appcfg.py
-
-# Install packages
-RUN apt-get -y update && apt-get -y install apt-utils build-essential curl gettext git wget
 
 # Set Go Version
 ENV GO_VERSION 1.12.6
