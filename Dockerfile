@@ -5,7 +5,7 @@ ENV PATH /usr/lib/google-cloud-sdk/platform/google_appengine:${PATH}
 RUN chmod +x /usr/lib/google-cloud-sdk/platform/google_appengine/appcfg.py
 
 # Set Go Version
-ENV GO_VERSION 1.12.6
+ENV GO_VERSION 1.12.17
 
 # Set goroot
 ENV GOROOT /opt/go
@@ -20,9 +20,3 @@ ENV PATH ${GOPATH}/bin:${PATH}
 
 # Confirm go version
 RUN go version
-
-# Install dep
-RUN go get -u github.com/golang/dep/cmd/dep
-
-# Install glide
-RUN curl https://glide.sh/get | sh
