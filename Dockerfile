@@ -1,22 +1,10 @@
-FROM longkey1/gcp:latest
+FROM longkey1/go:latest
 
-# Executable appcfg.py
-ENV PATH /usr/lib/google-cloud-sdk/platform/google_appengine:${PATH}
-RUN chmod +x /usr/lib/google-cloud-sdk/platform/google_appengine/appcfg.py
+# Install Google Cloud SDK
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - && apt-get update -y && apt-get install google-cloud-sdk -y
 
-# Set Go Version
-ENV GO_VERSION 1.12.17
+# Install golang components
+RUN apt-get install google-cloud-sdk-app-engine-go
 
-# Set goroot
-ENV GOROOT /opt/go
-RUN cd /tmp && wget https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz && tar xzvf go${GO_VERSION}.linux-amd64.tar.gz && mv go ${GOROOT}
-ENV PATH ${GOROOT}/bin:${PATH}
-
-# Set gopath
-ENV GOPATH /work
-RUN mkdir -p ${GOPATH}/bin ${GOPATH}/src ${GOPATH}/pkg
-RUN chmod -R 777 ${GOPATH}
-ENV PATH ${GOPATH}/bin:${PATH}
-
-# Confirm go version
-RUN go version
+# Confirm gcloud version
+RUN gcloud version
