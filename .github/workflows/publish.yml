@@ -9,7 +9,7 @@ jobs:
   build_and_publish:
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: go-gcloud
+      IMAGE_NAME: go-gcloud-sdk
     steps:
       - name: Checkout
         uses: actions/checkout@v2
