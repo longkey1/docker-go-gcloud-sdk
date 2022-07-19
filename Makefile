@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 
 repo := ghcr.io/longkey1/go
-tags := latest 1.16 1.15 1.14 1.13 1.12 1.11
+tags := latest 1.18 1.17 1.16 1.15 1.14 1.13 1.12 1.11
 
 define build_git_branch
 	git checkout master
